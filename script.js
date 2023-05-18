@@ -74,5 +74,11 @@ for (let index = 0; index < pixels.length; index += 1) {
     pixels[index].addEventListener('click', preenchePixel)
 }
 
+const btnLimpar = document.querySelector('#clear-board');
+btnLimpar.addEventListener('click', ()=> {
+    for(let index = 0; index < pixels.length; index += 1) {
+        pixels[index].style.backgroundColor = '#ffffff'
+    }
+})
 window.onload = ()=> {   
 };
