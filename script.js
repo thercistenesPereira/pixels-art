@@ -1,26 +1,27 @@
 
-    const geraCorAleatoria = () => {
-        let caracteresCores = '0123456789ABCDEF';
-        let cor = '#';
+const geraCorAleatoria = () => {
+    let caracteresCores = '0123456789ABCDEF';
+    let cor = '#';
 
-        for (let index = 0; index < 6; index += 1) {
-            cor += caracteresCores[Math.floor(Math.random() * 16)];
-        }
-        return cor;   
+    for (let index = 0; index < 6; index += 1) {
+        cor += caracteresCores[Math.floor(Math.random() * 16)];
     }
-    const atualizaCorPaleta = ()=> {
-        const cor2 = document.querySelector('#color2');
-        const cor3 = document.querySelector('#color3');
-        const cor4 = document.querySelector('#color4');
+    return cor;   
+}
 
-        cor2.style.backgroundColor = geraCorAleatoria();
-        cor3.style.backgroundColor = geraCorAleatoria();
-        cor4.style.backgroundColor = geraCorAleatoria();
-        
-        localStorage.setItem('cor2', JSON.stringify(cor2.style.backgroundColor));
-        localStorage.setItem('cor3', JSON.stringify(cor3.style.backgroundColor));
-        localStorage.setItem('cor4', JSON.stringify(cor4.style.backgroundColor));  
-    };
+const atualizaCorPaleta = ()=> {
+    const cor2 = document.querySelector('#color2');
+    const cor3 = document.querySelector('#color3');
+    const cor4 = document.querySelector('#color4');
+
+    cor2.style.backgroundColor = geraCorAleatoria();
+    cor3.style.backgroundColor = geraCorAleatoria();
+    cor4.style.backgroundColor = geraCorAleatoria();
+    
+    localStorage.setItem('cor2', JSON.stringify(cor2.style.backgroundColor));
+    localStorage.setItem('cor3', JSON.stringify(cor3.style.backgroundColor));
+    localStorage.setItem('cor4', JSON.stringify(cor4.style.backgroundColor));  
+};
         
 const recuperaDado = ()=> {
     const cor2 = JSON.parse(localStorage.getItem('cor2'));
@@ -30,16 +31,18 @@ const recuperaDado = ()=> {
     recuperaDado()
     atualizaCorPaleta()
 
-    const buttonRadomColor = document.querySelector('#button-random-color');
-    buttonRadomColor.addEventListener('click', atualizaCorPaleta);
+const buttonRadomColor = document.querySelector('#button-random-color');
 
-const pixelBoard = document.querySelector('#pixel-board');    
-    for (let j = 0; j < 25; j++) {
-      const pixel = document.createElement("div");
-      pixel.classList.add("pixel");
-      pixel.style.backgroundColor = "white";
-      pixelBoard.appendChild(pixel);
-    }
+buttonRadomColor.addEventListener('click', atualizaCorPaleta);
+
+const pixelBoard = document.querySelector('#pixel-board');  
+
+for (let j = 0; j < 25; j++) {
+    const pixel = document.createElement("div");
+    pixel.classList.add("pixel");
+    pixel.style.backgroundColor = "white";
+    pixelBoard.appendChild(pixel);
+}
 
 const corSelecionada = ()=> {
     const paleta = document.querySelectorAll('.color');
@@ -53,11 +56,23 @@ const corSelecionada = ()=> {
 }
 
 const corInicialSelecionada = document.querySelector('.color');
+corInicialSelecionada.style.backgroundColor = '#000000';
 corInicialSelecionada.classList.add('selected');
 
 const paleta = document.querySelector('#color-palette');
 paleta.addEventListener('click', corSelecionada);
 
+const preenchePixel = ()=> {
+    const pixelSelecionado = document.querySelector('.color.selected');
+    const pixelClicado = event.target;
     
+    pixelClicado.style.backgroundColor = pixelSelecionado.style.backgroundColor
+} 
+
+const pixels = document.querySelectorAll('.pixel');
+for (let index = 0; index < pixels.length; index += 1) {
+    pixels[index].addEventListener('click', preenchePixel)
+}
+
 window.onload = ()=> {   
 };
