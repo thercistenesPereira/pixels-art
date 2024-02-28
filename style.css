@@ -1,36 +1,37 @@
-*{
+/* stylelint-disable-next-line block-opening-brace-space-before */
+*{ padding: 0;
+  margin: 0;
+}
 
-    padding: 0;
-    margin: 0;
+.color {  height: 40px;
+  width: 40px;
+  border: 1px solid black;
 }
-.color {
-    height: 40px;
-    width: 40px;
-    border: 1px solid black;
+
+#color-palette {  display: flex;
 }
-#color-palette {
-    display: flex;
+
+.black {  background-color: black;
 }
-.black {
-    background-color: black;
+
+#pixel-board {  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid;
+  margin-top: 20px;
 }
-#pixel-board {
-    width: 250px;
-    height: 250px;
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid;
-    margin-top: 20px;
-} 
-.pixel {
-    margin: 2px;
-    width: 40px;
-    height: 40px;
-    border: 1px solid black;
+
+.pixel {  margin: 2px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
 }
+
 .linha {
-    border: 1px solid black;
+  border: 1px solid black;
 }
+
 button {
-    margin-top: 20px;
+  margin-top: 20px;
 }
